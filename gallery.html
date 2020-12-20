@@ -1,0 +1,467 @@
+<html>
+<head>
+<title>Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {margin:0;font-family:Arial}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.active {
+  background-color: #d75f44;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/* Header/logo Title */
+.header {
+  padding: 5px;
+  text-align: center;
+  background: #333;
+  color: white;
+}
+
+/* Footer */
+.footer {
+  padding: 1px;
+  text-align: center;
+  background: #333;
+  color: white;
+}
+</style>
+</head>
+<body bgcolor="#df9a8b">
+<div class="header">
+  <h1><marquee>WELCOME TO MY GALLERY</marquee></h1>
+</div>
+<div class="topnav" id="myTopnav">
+  <a href="index.html" class="active">Home</a>
+  <a href="biodata.html">Biodata</a>
+  <a href="experience.html">Experience</a>
+  <div class="dropdown">
+    <button class="dropbtn">Education
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="education.html">University</a>
+      <a href="education.html">Secondary School</a>
+      <a href="education.html">Primary School</a>
+    </div>
+  </div> 
+  <a href="family.html">Family</a>
+   <div class="dropdown">
+    <button class="dropbtn">Gallery
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="gallery.html">My Picture</a>
+      <a href="gallery.html">My Video</a>
+      <a href="gallery.html">My Favourite Songs</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn">Friend
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="friend.html">BFF</a>
+      <a href="friend.html">School</a>
+      <a href="friend.html">UITM</a>
+    </div>
+  </div> 
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+<h2 style="text-align:center">My Pictures</h2>
+
+<div class="row">
+  <div class="column">
+    <img src="image/teah4.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="image/tihah4.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="image/dp.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="image/dp4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+  </div>
+</div>
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="image/teah2.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="image/teha2.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="image/tihah2.jpg" style="width:100%">
+    </div>
+    
+    <div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="image/dp3.jpg" style="width:100%">
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+
+    <div class="column">
+      <img class="demo cursor" src="image/teah3.jpg" style="width:100%" onclick="currentSlide(1)" alt="Fatihah">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="image/teha3.jpg" style="width:100%" onclick="currentSlide(2)" alt="Tihah">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="image/tihah3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Teha">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="image/tihah4.jpg" style="width:100%" onclick="currentSlide(4)" alt="Teah">
+    </div>
+  </div>
+</div>
+<div style="padding-left:5%">
+<h2 align="center">My Videos</h2>
+<embed src="video/shortvacay.mp4" autoplay="false"></embed>
+<embed src="video/boom1.mp4" autoplay="false"></embed>
+<embed src="video/boom2.mp4" autoplay="false"></embed>
+<embed src="video/niece.mp4" autoplay="false"></embed>
+<embed src="video/uitm.mp4" autoplay="false"></embed>
+<embed src="video/rsy.mp4" autoplay="false"></embed>
+<embed src="video/sport.mp4" autoplay="false"></embed>
+<embed src="video/birthday.mp4" autoplay="false"></embed>
+</div>
+ <h2 align="center">My Favourite Songs</h2>
+<table border="1" width="25%" align="center" valign="middle" cellpadding="1" cellspacing="2">
+<tr align="center">
+</tr>
+<tr align="center" bgcolor="#E67B37">
+<th>List of Songs</th>
+</tr>
+<tr align="left">
+<td bgcolor="#EF9F6D">
+<ol style="list-style-type:1;">
+  <li><a href="audio/terlalucinta.mp3" style="color:red">Terlalu Cinta by Rossa</a></li>
+  <li><a href="audio/kaukekasihku.mp3" style="color:green">Kau Kekasihku by Tokti</a></li>
+  <li><a href="audio/kalisrindu.mp3" style="color:purple">Kalis Rindu by Elyana</a></li>
+  <li><a href="audio/jikakaukekasih.mp3" style="color:yellow">Jika Kau Kekasih by Linda</a></li> 
+  <li><a href="audio/stacy.mp3" style="color:blue">Cakap Ke Tangan by Stacy</a></li> 
+  <li><a href="audio/raja.mp3" style="color:red">Raja Jatuh Cinta By Numata</a></li> 
+  <li><a href="audio/luluh.mp3" style="color:green">Luluh by Khai Bahar</a></li> 
+  <li><a href="audio/hazymoon.mp3" style="color:purple">Hatsune Miku by Hazy Moon</a></li> 
+  <li><a href="audio/beme.mp3" style="color:yellow">It's Gonna Be Me by Nsync</a></li> 
+  <li><a href="audio/asd.mp3" style="color:blue">Aku Suka Dia by Ainan Tasneem</a></li> 
+</ol></td>
+</table>
+<br>
+<a href="#"><img src="image/button.png" hspace="90%" vspace="30"</a>
+<br><br>
+
+<div class="footer">
+  <h4>Disclaimer !!!</h4>
+
+<footer>
+  <p>This website is developed for IMD311
+  <br>
+  Author: Fatihah Fuad
+  <br>
+  <font color="#df9a8b" a href="mailto:fatihah_fuad@yahoo.com"</font>fatihah_fuad@yahoo.com</a></p>
+</footer>
+</div>
+<script>
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+<br>
+</body>
+</html>
